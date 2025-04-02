@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: price-tracker
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn -w 4 -b 0.0.0.0:$PORT main:app"
+    envVars:
+      - key: EMAIL_SENDER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: EMAIL_RECEIVER
+        sync: false
